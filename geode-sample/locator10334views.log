@@ -1,0 +1,5 @@
+
+[info 2021/06/02 20:01:31.372 MDT <main> tid=0x1] Log opened with new distributed system connection.  View[192.168.0.17(loader:14318)<ec><v0>:41000|0] members: [192.168.0.17(loader:14318)<ec><v0>:41000{lead}]
+
+[info 2021/06/02 20:02:27.862 MDT <Cache Server Load Polling Thread> tid=0x53] server count: 1 connected client count: 0 client subscription queue count: 0.0
+  current servers : 192.168.0.17(loader:14318)<ec><v0>:41000 
