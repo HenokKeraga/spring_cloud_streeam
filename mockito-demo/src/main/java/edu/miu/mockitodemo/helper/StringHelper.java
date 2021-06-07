@@ -1,27 +1,34 @@
-package com.in28minutes.junit.helper;
+package edu.miu.mockitodemo.helper;
 
 public class StringHelper {
 
-	public String truncateAInFirst2Positions(String str) {
+	private final StringProviderInterface stringProviderInterface;
+
+	public StringHelper(StringProviderInterface stringProviderInterface) {
+		this.stringProviderInterface = stringProviderInterface;
+	}
+
+	public String truncateAInFirst2Positions() {
+		var str=stringProviderInterface.getName();
 		if (str.length() <= 2)
 			return str.replaceAll("A", "");
 
-		String first2Chars = str.substring(0, 2);
-		String stringMinusFirst2Chars = str.substring(2);
+		var first2Chars = str.substring(0, 2);
+		var stringMinusFirst2Chars = str.substring(2);
 
 		return first2Chars.replaceAll("A", "") + stringMinusFirst2Chars;
 	}
-	
-	public boolean areFirstAndLastTwoCharactersTheSame(String str) {
 
+	public boolean areFirstAndLastTwoCharactersTheSame() {
+		String str=stringProviderInterface.getName();
 		if (str.length() <= 1)
 			return false;
 		if (str.length() == 2)
 			return true;
 
-		String first2Chars = str.substring(0, 2);
+		var first2Chars = str.substring(0, 2);
 
-		String last2Chars = str.substring(str.length() - 2);
+		var last2Chars = str.substring(str.length() - 2);
 
 		return first2Chars.equals(last2Chars);
 	}

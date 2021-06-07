@@ -1,4 +1,5 @@
 package edu.miu.mockitodemo.helper;
 
-public class StringProviderInterface {
+public interface StringProviderInterface {
+    String getName();
 }

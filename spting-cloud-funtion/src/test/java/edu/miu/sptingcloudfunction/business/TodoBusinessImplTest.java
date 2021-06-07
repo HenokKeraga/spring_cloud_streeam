@@ -1,14 +1,18 @@
 package edu.miu.sptingcloudfunction.business;
 
 import edu.miu.sptingcloudfunction.business.api.TodoService;
-import org.junit.jupiter.api.AfterEach;
-import org.junit.jupiter.api.Assertions;
-import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.*;
+import org.junit.jupiter.api.condition.EnabledIfSystemProperties;
+import org.junit.jupiter.api.condition.EnabledOnOs;
+import org.junit.jupiter.api.condition.OS;
 import org.mockito.*;
 
 import java.util.List;
 
+//1. create an instance of the class under test
+//2. setup inputs
+//3. execute the code you want to test
+//4. verify the result is what you expect
 class TodoBusinessImplTest {
     @Mock
     TodoService todoService;
@@ -35,23 +39,29 @@ class TodoBusinessImplTest {
                 .thenReturn(
                         List.of("Spring cloud", "Spring cloud stream", "hibernate")
                 );
-
         var result = todoBusiness.retrieveTodosRelatedToSpring("henok");
 
-       // var captor= ArgumentCaptor.forClass(String.class);
+        // var captor= ArgumentCaptor.forClass(String.class);
 
         Mockito.verify(todoService).retrieveTodos(captor.capture()); //matcher
 
-        var arg=captor.getValue();
-        Assertions.assertEquals("henok",arg);
+        var arg = captor.getValue();
 
-        Assertions.assertArrayEquals(List.of(
-                "Spring cloud", "Spring cloud stream").toArray(String[]::new),
-                result.toArray(String[]::new)
-        );
+        Assertions.assertEquals("henok", arg);
+
+        Assertions.assertIterableEquals(List.of( "Spring cloud", "Spring cloud stream"), result);
+
     }
 
     @Test
+    @Disabled
+    @Tag("unit_test")
+    void testDisabled() {
+    }
+
+    @Test
+    @EnabledOnOs(OS.MAC)
+//    @EnabledIfSystemProperties(value = )
     void deleteTodosNotRelatedToSpring() {
     }
 
