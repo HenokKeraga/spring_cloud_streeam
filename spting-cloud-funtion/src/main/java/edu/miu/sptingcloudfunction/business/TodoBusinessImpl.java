@@ -37,4 +37,7 @@ public class TodoBusinessImpl {
     }
 
 
+    public int toTest() {
+        return 4;
+    }
 }
